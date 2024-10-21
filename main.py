@@ -7,7 +7,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-pygame.display.set_caption('Game TIR')
+pygame.display.set_caption('Игра: кликай по мишени')
 icon = pygame.image.load('images/icon.jpg')
 pygame.display.set_icon(icon)
 
@@ -18,27 +18,22 @@ target_height = 50
 target_x = random.randint(0, SCREEN_WIDTH - target_width)
 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 
-# Подсчет кликов
 hits = 0
 misses = 0
 
-# Шрифт для вывода текста
-font = pygame.font.Font(None, 36)
+font = pygame.font.Font(None, 40)
 
 running = True
 while running:
     screen.fill('green')
 
-    # Отрисовка мишени
     screen.blit(target_img, (target_x, target_y))
 
-    # Отрисовка счетчиков
-    hits_text = font.render(f'Hits: {hits}', True, (255, 255, 255))
-    misses_text = font.render(f'Misses: {misses}', True, (255, 255, 255))
-    screen.blit(hits_text, (10, SCREEN_HEIGHT - 40))
-    screen.blit(misses_text, (SCREEN_WIDTH - 150, SCREEN_HEIGHT - 40))
+    hits_text = font.render(f'Попадания: {hits}', True, (255, 255, 255))
+    misses_text = font.render(f'Промахи: {misses}', True, (255, 255, 255))
+    screen.blit(hits_text, (20, SCREEN_HEIGHT - 50))
+    screen.blit(misses_text, (SCREEN_WIDTH - 200, SCREEN_HEIGHT - 50))
 
-    # Обработка событий
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
